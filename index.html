@@ -5,7 +5,7 @@
   <title>Valentine 💘</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Confetti -->
+  <!-- CONFETTI -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
@@ -17,7 +17,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
     }
 
     .container {
@@ -38,9 +37,15 @@
       color: #555;
     }
 
-    img {
-      width: 100%;
-      border-radius: 12px;
+    .hidden {
+      display: none;
+    }
+
+    /* PAGE 1 BUTTONS */
+    .buttons {
+      position: relative;
+      height: 120px;
+      margin-top: 20px;
     }
 
     button {
@@ -49,20 +54,22 @@
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      margin: 10px;
+      position: absolute;
+      white-space: nowrap;
     }
 
-    .yes {
+    #yesBtn {
       background: #ff4d6d;
       color: white;
+      left: 50%;
+      transform: translateX(-110%);
     }
 
-    .no {
+    #noBtn {
       background: #ccc;
-    }
-
-    .hidden {
-      display: none;
+      color: #333;
+      left: 50%;
+      transform: translateX(10%);
     }
 
     /* PAGE 2 GRID */
@@ -74,6 +81,8 @@
     }
 
     .grid img {
+      width: 100%;
+      border-radius: 12px;
       cursor: pointer;
       transition: transform 0.2s;
     }
@@ -83,9 +92,10 @@
     }
 
     .back-btn {
+      position: static;
+      margin-top: 20px;
       background: #ff4d6d;
       color: white;
-      margin-top: 20px;
     }
   </style>
 </head>
@@ -94,17 +104,20 @@
 
 <div class="container">
 
-  <!-- ================= PAGE 1 ================= -->
+  <!-- ========== PAGE 1 ========== -->
   <div id="page1">
     <h1>Will you be my Valentine? 💘</h1>
     <p>I promise love, food & cuddles 🥰</p>
-    <button class="yes" onclick="goToGallery()">Yes 💖</button>
-    <button class="no" onclick="moveNo(this)">No 🙄</button>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 🙄</button>
+    </div>
   </div>
 
-  <!-- ================= PAGE 2 ================= -->
+  <!-- ========== PAGE 2 ========== -->
   <div id="page2" class="hidden">
-    <h1>Choose a memory 💌</h1>
+    <h1>Choose one 💌</h1>
     <p>Tap any image</p>
 
     <div class="grid">
@@ -117,9 +130,9 @@
     </div>
   </div>
 
-  <!-- ================= PAGE 3 ================= -->
+  <!-- ========== PAGE 3 ========== -->
   <div id="page3" class="hidden">
-    <h1 id="messageTitle">💖</h1>
+    <h1>💖</h1>
     <p id="messageText"></p>
     <button class="back-btn" onclick="backToGallery()">⬅ Back</button>
   </div>
@@ -128,45 +141,70 @@
 
 <script>
   /* =====================
-     MESSAGES (EDIT HERE)
+     EDIT MESSAGES HERE
      ===================== */
+  const message1 = "Message 1 ❤️ Change this";
+  const message2 = "Message 2 💕 Change this";
+  const message3 = "Message 3 😘 Change this";
+  const message4 = "Message 4 💌 Change this";
+  const message5 = "Message 5 🥰 Change this";
+  const message6 = "Message 6 💖 Change this";
 
   const messages = {
-    1: "Message 1 ❤️ Change this to whatever you want.",
-    2: "Message 2 💕 This can be emotional, funny, or romantic.",
-    3: "Message 3 😘 Your inside joke goes here.",
-    4: "Message 4 💌 Something you love about him.",
-    5: "Message 5 🥰 A promise or memory.",
-    6: "Message 6 💖 End with something special."
+    1: message1,
+    2: message2,
+    3: message3,
+    4: message4,
+    5: message5,
+    6: message6
   };
 
   /* =====================
-     PAGE LOGIC
+     PAGE ELEMENTS
      ===================== */
-
   const page1 = document.getElementById("page1");
   const page2 = document.getElementById("page2");
   const page3 = document.getElementById("page3");
 
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const buttonsBox = document.querySelector(".buttons");
   const messageText = document.getElementById("messageText");
 
-  function goToGallery() {
-    page1.classList.add("hidden");
-    page2.classList.remove("hidden");
+  /* =====================
+     NO BUTTON LOGIC
+     ===================== */
+  const noTexts = [
+    "Are you serious?",
+    "Really?",
+    "Think again.",
+    "Nice try 😏",
+    "No is not an option",
+    "Wrong answer"
+  ];
 
-    confetti({
-      particleCount: 200,
-      spread: 90
-    });
+  let noCount = 0;
+
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("click", moveNo);
+
+  function moveNo() {
+    const boxW = buttonsBox.offsetWidth;
+    const boxH = buttonsBox.offsetHeight;
+    const btnW = noBtn.offsetWidth;
+    const btnH = noBtn.offsetHeight;
+
+    const x = Math.random() * (boxW - btnW);
+    const y = Math.random() * (boxH - btnH);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    noBtn.textContent = noTexts[noCount % noTexts.length];
+    noCount++;
   }
 
-  function openMessage(num) {
-    page2.classList.add("hidden");
-    page3.classList.remove("hidden");
-
-    messageText.textContent = messages[num];
-  }
-
-  function backToGallery() {
-    page3.classList.add("hidden");
-    page2.cla
+  /* =====================
+     YES BUTTON
+     ===================== */
+  yesBtn.addEventListener("click", () => {
