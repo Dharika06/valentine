@@ -24,6 +24,23 @@
     align-items: center;
   }
 
+  /* HERO TEXT (outside white box) */
+.hero-text {
+  font-family: 'Playfair Display', serif;
+  color: #ff4d6d;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeDown 1s ease forwards;
+}
+
+/* WHITE CONTENT BOX */
+.content-box {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 25px;
+  border-radius: 18px;
+}
+
+
   .card {
     background: transparent;
     padding: 20px;
@@ -205,8 +222,13 @@
 <div class="card">
 
   <!-- PAGE 1 -->
-  <div id="page1">
-    <h1>Tanishq Sethi, Will you be my Valentine? 💘</h1>
+<div id="page1">
+
+  <!-- TEXT OUTSIDE WHITE BOX -->
+  <h1 class="hero-text">Tanishq Sethi, Will you be my Valentine? 💘</h1>
+
+  <!-- WHITE BOX CONTENT -->
+  <div class="content-box">
     <p>I promise to always love & support you 🥰</p>
 
     <div class="buttons">
@@ -214,6 +236,9 @@
       <button id="noBtn">No 🙄</button>
     </div>
   </div>
+
+</div>
+
 
   <!-- PAGE 2 -->
   <div id="page2" class="hidden">
