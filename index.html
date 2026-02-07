@@ -24,21 +24,37 @@
     align-items: center;
   }
 
-  /* HERO TEXT (outside white box) */
+  /* PAGE 1 CONTAINER */
+#page1 {
+  padding: 10px;
+}
+
+/* HERO TEXT OUTSIDE BOX */
 .hero-text {
   font-family: 'Playfair Display', serif;
   color: #ff4d6d;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   animation: fadeDown 1s ease forwards;
 }
 
-/* WHITE CONTENT BOX */
+/* WHITE BOX WITH IMAGE INSIDE */
 .content-box {
-  background: rgba(255, 255, 255, 0.85);
+  position: relative;
   padding: 25px;
-  border-radius: 18px;
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.85)
+    ),
+    url("https://drive.google.com/thumbnail?id=1MSq2lG8Racl5LTZzydGOsFtc2WoY724t&sz=w2000");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 25px rgba(255, 77, 109, 0.35);
+  animation: softGlow 3s ease-in-out infinite;
 }
+
 
 
   .card {
@@ -73,9 +89,7 @@
     position: relative;
     padding: 30px;
     border-radius: 20px;
-    background:
-      linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
-      url("https://drive.google.com/thumbnail?id=1MSq2lG8Racl5LTZzydGOsFtc2WoY724t&sz=w2000");
+   
     background-size: cover;
     background-position: center;
     animation: softGlow 3s ease-in-out infinite;
@@ -221,13 +235,13 @@
 
 <div class="card">
 
-  <!-- PAGE 1 -->
+<!-- PAGE 1 -->
 <div id="page1">
 
   <!-- TEXT OUTSIDE WHITE BOX -->
   <h1 class="hero-text">Tanishq Sethi, Will you be my Valentine? 💘</h1>
 
-  <!-- WHITE BOX CONTENT -->
+  <!-- WHITE BOX WITH IMAGE INSIDE -->
   <div class="content-box">
     <p>I promise to always love & support you 🥰</p>
 
@@ -238,7 +252,6 @@
   </div>
 
 </div>
-
 
   <!-- PAGE 2 -->
   <div id="page2" class="hidden">
