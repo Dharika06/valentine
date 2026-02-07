@@ -34,6 +34,7 @@
   h1 { color: #ff4d6d; }
   p { color: #555; }
 
+  /* PAGE 1 */
   .buttons {
     position: relative;
     height: 120px;
@@ -62,6 +63,7 @@
     right: 40px;
   }
 
+  /* PAGE 3 GRID */
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -71,8 +73,15 @@
 
   .grid img {
     width: 100%;
+    aspect-ratio: 1 / 1;   /* ⭐ makes all images same size */
+    object-fit: cover;     /* ⭐ crops nicely */
     border-radius: 12px;
     cursor: pointer;
+  }
+
+  .grid img:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease;
   }
 
   .center-btn {
@@ -111,12 +120,12 @@
     <h1>Pick one 💕</h1>
 
     <div class="grid">
-      <img src="https://drive.google.com/thumbnail?id=1jQimDUMvph30aHMkuqpndj_W23sZoL15" onclick="openMessage(1)">
-      <img src="https://drive.google.com/thumbnail?id=1_AfpFDnSMVjkRSug_s0KcSM4sSTwY7RJ" onclick="openMessage(2)">
-      <img src="https://via.placeholder.com/150" onclick="openMessage(3)">
-      <img src="https://via.placeholder.com/150" onclick="openMessage(4)">
-      <img src="https://via.placeholder.com/150" onclick="openMessage(5)">
-      <img src="https://via.placeholder.com/150" onclick="openMessage(6)">
+      <img src="https://drive.google.com/thumbnail?id=1jQimDUMvph30aHMkuqpndj_W23sZoL15&sz=w1000" onclick="openMessage(1)">
+      <img src="https://drive.google.com/thumbnail?id=1_AfpFDnSMVjkRSug_s0KcSM4sSTwY7RJ&sz=w1000" onclick="openMessage(2)">
+      <img src="https://via.placeholder.com/300" onclick="openMessage(3)">
+      <img src="https://via.placeholder.com/300" onclick="openMessage(4)">
+      <img src="https://via.placeholder.com/300" onclick="openMessage(5)">
+      <img src="https://via.placeholder.com/300" onclick="openMessage(6)">
     </div>
   </div>
 
