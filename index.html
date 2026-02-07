@@ -5,12 +5,17 @@
 <title>Valentine 💘</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <!-- Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
   body {
-    font-family: Poppins, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
     height: 100vh;
     margin: 0;
@@ -31,8 +36,17 @@
 
   .hidden { display: none; }
 
-  h1 { color: #ff4d6d; }
-  p { color: #555; }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: #ff4d6d;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    color: #555;
+    font-weight: 400;
+    line-height: 1.6;
+  }
 
   /* PAGE 1 */
   .buttons {
@@ -42,8 +56,10 @@
   }
 
   button {
+    font-family: 'Poppins', sans-serif;
     padding: 12px 22px;
     font-size: 16px;
+    font-weight: 500;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -73,17 +89,17 @@
 
   .grid img {
     width: 100%;
-    aspect-ratio: 1 / 1;   /* ⭐ makes all images same size */
-    object-fit: cover;     /* ⭐ crops nicely */
-    object-position: top;  
-    transform: scale(1.1);  
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: 50% 15%;
+    transform: scale(1.1);
     border-radius: 12px;
     cursor: pointer;
+    transition: transform 0.3s ease;
   }
 
   .grid img:hover {
-    transform: scale(1.05);
-    transition: 0.3s ease;
+    transform: scale(1.18);
   }
 
   .center-btn {
@@ -91,6 +107,7 @@
     margin-top: 20px;
     background: #ff4d6d;
     color: white;
+    font-family: 'Poppins', sans-serif;
   }
 </style>
 </head>
@@ -102,7 +119,7 @@
   <!-- PAGE 1 -->
   <div id="page1">
     <h1>Tanishq Sethi, Will you be my Valentine? 💘</h1>
-    <p>I promise to always love & support you🥰</p>
+    <p>I promise to always love & support you 🥰</p>
 
     <div class="buttons">
       <button id="yesBtn">Yes 💖</button>
@@ -123,11 +140,11 @@
 
     <div class="grid">
       <img src="https://drive.google.com/thumbnail?id=1jQimDUMvph30aHMkuqpndj_W23sZoL15&sz=w1000" onclick="openMessage(1)">
-      <img src="https://drive.google.com/thumbnail?id=1PFaBX8lcBjBCWhuDKy_lgh2Suw704ej-" onclick="openMessage(2)"> 
-      <img src="https://drive.google.com/thumbnail?id=1LkzRFJZB22kUV-3GkXuIbYGWL72duvIo" onclick="openMessage(3)">
-      <img src="https://drive.google.com/thumbnail?id=1XNF_HGF41n0IVvKWlmDVYjzsX_RK9BOC" onclick="openMessage(4)">
+      <img src="https://drive.google.com/thumbnail?id=1PFaBX8lcBjBCWhuDKy_lgh2Suw704ej-&sz=w1000" onclick="openMessage(2)"> 
+      <img src="https://drive.google.com/thumbnail?id=1LkzRFJZB22kUV-3GkXuIbYGWL72duvIo&sz=w1000" onclick="openMessage(3)">
+      <img src="https://drive.google.com/thumbnail?id=1XNF_HGF41n0IVvKWlmDVYjzsX_RK9BOC&sz=w1000" onclick="openMessage(4)">
       <img src="https://drive.google.com/thumbnail?id=1_AfpFDnSMVjkRSug_s0KcSM4sSTwY7RJ&sz=w1000" onclick="openMessage(5)">
-      <img src="https://drive.google.com/thumbnail?id=1y2YgGZgsZrGQGuPSZCyEBvVM9MXBImLe" onclick="openMessage(6)">
+      <img src="https://drive.google.com/thumbnail?id=1y2YgGZgsZrGQGuPSZCyEBvVM9MXBImLe&sz=w1000" onclick="openMessage(6)">
     </div>
   </div>
 
@@ -141,10 +158,6 @@
 </div>
 
 <script>
-/* =====================
-   CONFIG (EDIT HERE)
-   ===================== */
-
 const noTexts = [
   "Are you serious?",
   "Really?",
@@ -155,17 +168,13 @@ const noTexts = [
 ];
 
 const messages = {
-  1: "💖 Promise 1: I promise to always choose you. Even on the days when life is messy, moods are off, or things feel heavy — I’ll still choose you, us, and what we’re building together.",
-  2: "💖 Promise 2: I promise to be your safe place. A place where you can be loud, quiet, tired, silly, or vulnerable — without pretending, without filters, without fear.",
-  3: "💖 Promise 3: I promise to grow with you. We won’t be perfect, but we’ll learn, evolve, and become better — together, side by side, hand in hand.",
-  4: "💖 Promise 4: I promise to show up. Not just on the good days, but on the hard ones too — when you need support, patience, reassurance, or just someone to sit beside you.",
-  5: "💖 Promise 5: I promise to laugh with you endlessly. At inside jokes, stupid moments, random memes, and the little things that only make sense to us.",
-  6: "💖 Promise 6: I promise to always come back after every fight. Even when things get hard, emotions run high, or words come out wrong — I’ll choose understanding over distance and us over ego."
+  1: "💖 Promise 1: I promise to always choose you...",
+  2: "💖 Promise 2: I promise to be your safe place...",
+  3: "💖 Promise 3: I promise to grow with you...",
+  4: "💖 Promise 4: I promise to show up...",
+  5: "💖 Promise 5: I promise to laugh with you endlessly...",
+  6: "💖 Promise 6: I promise to always come back after every fight..."
 };
-
-/* =====================
-   ELEMENTS
-   ===================== */
 
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
@@ -179,10 +188,6 @@ const buttonsBox = document.querySelector(".buttons");
 
 let noCount = 0;
 
-/* =====================
-   NO BUTTON
-   ===================== */
-
 noBtn.addEventListener("click", () => {
   const boxW = buttonsBox.offsetWidth;
   const boxH = buttonsBox.offsetHeight;
@@ -191,24 +196,15 @@ noBtn.addEventListener("click", () => {
 
   noBtn.style.left = Math.random() * (boxW - btnW) + "px";
   noBtn.style.top = Math.random() * (boxH - btnH) + "px";
-
   noBtn.textContent = noTexts[noCount % noTexts.length];
   noCount++;
 });
-
-/* =====================
-   YES BUTTON
-   ===================== */
 
 yesBtn.addEventListener("click", () => {
   confetti({ particleCount: 250, spread: 100 });
   page1.classList.add("hidden");
   page2.classList.remove("hidden");
 });
-
-/* =====================
-   NAVIGATION
-   ===================== */
 
 function goToGallery() {
   page2.classList.add("hidden");
