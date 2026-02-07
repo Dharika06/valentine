@@ -63,10 +63,18 @@
   animation: softGlow 3s ease-in-out infinite;
 }
 
-/* INNER CONTENT PUSHED TO BOTTOM */
-.box-inner {
-  margin-top: auto; /* ⭐ THIS PUSHES CONTENT DOWN */
+/* Top text inside white box */
+.top-text {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 500;
 }
+
+/* Push buttons to bottom */
+.box-inner {
+  margin-top: auto; /* ⭐ keeps buttons at bottom */
+}
+
 
 /* FIX BUTTONS ONLY ON PAGE 1 */
 .page1-buttons {
@@ -261,15 +269,20 @@
 
   <!-- WHITE BOX WITH IMAGE INSIDE -->
   <div class="content-box">
-  <div class="box-inner">
-    <p>I promise to always love & support you 🥰</p>
 
+  <!-- TEXT AT TOP -->
+  <p class="top-text">I promise to always love & support you 🥰</p>
+
+  <!-- CONTENT AT BOTTOM -->
+  <div class="box-inner">
     <div class="buttons page1-buttons">
       <button id="yesBtn">Yes 💖</button>
       <button id="noBtn">No 🙄</button>
     </div>
   </div>
+
 </div>
+
 
 
 </div>
