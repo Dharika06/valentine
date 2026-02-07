@@ -42,6 +42,7 @@
 .content-box {
   position: relative;
   margin-top: 50px;   /* ⭐ THIS MOVES IT DOWN */
+  height: 300px; 
   padding: 25px;
   border-radius: 20px;
   background:
@@ -50,6 +51,12 @@
       rgba(255, 255, 255, 0.85)
     ),
     url("https://drive.google.com/thumbnail?id=1MSq2lG8Racl5LTZzydGOsFtc2WoY724t&sz=w2000");
+
+   /* ⭐ KEY PART */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;     /* ⭐ PUSH CONTENT TO BOTTOM */
+
   background-size: cover;
   background-position: center;
   box-shadow: 0 0 25px rgba(255, 77, 109, 0.35);
