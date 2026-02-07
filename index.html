@@ -56,7 +56,8 @@
 
     .buttons {
       position: relative;
-      height: 80px;
+      height: 120px;
+      margin-top: 20px;
     }
 
     button {
@@ -67,6 +68,7 @@
       cursor: pointer;
       transition: 0.2s ease;
       position: absolute;
+      white-space: nowrap;
     }
 
     #yesBtn {
@@ -127,20 +129,21 @@
 
   <script>
     /* =====================
-       CONFIG SECTION
+       CONFIG
        ===================== */
 
     const noTexts = [
       "Are you serious?",
       "Really?",
       "Think again.",
-      "You better choose Yes",
-      "No is not an option 😌",
-      "Wrong answer 😏",
-      "Nice try 😤"
+      "Nice try 😏",
+      "No is not an option",
+      "Wrong answer",
+      "Try again",
+      "You better choose Yes 💖"
     ];
 
-    let countdownTime = 10; // ⏳ CHANGE TIMER HERE
+    let countdownTime = 10; // ⏳ change timer here
 
     /* =====================
        LOGIC
@@ -151,19 +154,28 @@
     const success = document.getElementById("success");
     const main = document.getElementById("main");
     const timeDisplay = document.getElementById("time");
+    const buttonsBox = document.querySelector(".buttons");
 
     let noClickCount = 0;
 
-    // NO BUTTON RUNS AWAY
+    // NO BUTTON BEHAVIOR
     noBtn.addEventListener("mouseover", moveNoButton);
     noBtn.addEventListener("click", moveNoButton);
 
     function moveNoButton() {
-      const maxX = window.innerWidth - noBtn.offsetWidth;
-      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const boxWidth = buttonsBox.offsetWidth;
+      const boxHeight = buttonsBox.offsetHeight;
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
 
-      noBtn.style.left = Math.random() * maxX + "px";
-      noBtn.style.top = Math.random() * maxY + "px";
+      const maxX = boxWidth - btnWidth;
+      const maxY = boxHeight - btnHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
 
       noBtn.textContent = noTexts[noClickCount % noTexts.length];
       noClickCount++;
@@ -187,8 +199,8 @@
       success.style.display = "block";
 
       confetti({
-        particleCount: 200,
-        spread: 90,
+        particleCount: 250,
+        spread: 100,
         origin: { y: 0.6 }
       });
     });
