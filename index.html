@@ -1,110 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Valentine 💘</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Valentine 💘</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CONFETTI -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+<style>
+  body {
+    font-family: Poppins, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .container {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      max-width: 450px;
-      width: 90%;
-    }
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
 
-    h1 {
-      color: #ff4d6d;
-    }
+  .hidden { display: none; }
 
-    p {
-      color: #555;
-    }
+  h1 { color: #ff4d6d; }
+  p { color: #555; }
 
-    .hidden {
-      display: none;
-    }
+  .buttons {
+    position: relative;
+    height: 120px;
+    margin-top: 20px;
+  }
 
-    /* PAGE 1 BUTTONS */
-    .buttons {
-      position: relative;
-      height: 120px;
-      margin-top: 20px;
-    }
+  button {
+    padding: 12px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    position: absolute;
+    white-space: nowrap;
+  }
 
-    button {
-      padding: 12px 25px;
-      font-size: 16px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      position: absolute;
-      white-space: nowrap;
-    }
+  #yesBtn {
+    background: #ff4d6d;
+    color: white;
+    left: 40px;
+  }
 
-    #yesBtn {
-      background: #ff4d6d;
-      color: white;
-      left: 50%;
-      transform: translateX(-110%);
-    }
+  #noBtn {
+    background: #ccc;
+    color: #333;
+    right: 40px;
+  }
 
-    #noBtn {
-      background: #ccc;
-      color: #333;
-      left: 50%;
-      transform: translateX(10%);
-    }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
 
-    /* PAGE 2 GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 20px;
-    }
+  .grid img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+  }
 
-    .grid img {
-      width: 100%;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .grid img:hover {
-      transform: scale(1.05);
-    }
-
-    .back-btn {
-      position: static;
-      margin-top: 20px;
-      background: #ff4d6d;
-      color: white;
-    }
-  </style>
+  .center-btn {
+    position: static;
+    margin-top: 20px;
+    background: #ff4d6d;
+    color: white;
+  }
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="card">
 
-  <!-- ========== PAGE 1 ========== -->
+  <!-- PAGE 1 -->
   <div id="page1">
     <h1>Will you be my Valentine? 💘</h1>
     <p>I promise love, food & cuddles 🥰</p>
@@ -115,10 +99,16 @@
     </div>
   </div>
 
-  <!-- ========== PAGE 2 ========== -->
+  <!-- PAGE 2 -->
   <div id="page2" class="hidden">
-    <h1>Choose one 💌</h1>
-    <p>Tap any image</p>
+    <h1>YAYYYYY 🎉</h1>
+    <p>You just made me so happy 😭❤️</p>
+    <button class="center-btn" onclick="goToGallery()">More 💌</button>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div id="page3" class="hidden">
+    <h1>Pick one 💕</h1>
 
     <div class="grid">
       <img src="https://via.placeholder.com/150" onclick="openMessage(1)">
@@ -130,81 +120,101 @@
     </div>
   </div>
 
-  <!-- ========== PAGE 3 ========== -->
-  <div id="page3" class="hidden">
+  <!-- PAGE 4 -->
+  <div id="page4" class="hidden">
     <h1>💖</h1>
     <p id="messageText"></p>
-    <button class="back-btn" onclick="backToGallery()">⬅ Back</button>
+    <button class="center-btn" onclick="backToGallery()">⬅ Back</button>
   </div>
 
 </div>
 
 <script>
-  /* =====================
-     EDIT MESSAGES HERE
-     ===================== */
-  const message1 = "Message 1 ❤️ Change this";
-  const message2 = "Message 2 💕 Change this";
-  const message3 = "Message 3 😘 Change this";
-  const message4 = "Message 4 💌 Change this";
-  const message5 = "Message 5 🥰 Change this";
-  const message6 = "Message 6 💖 Change this";
+/* =====================
+   CONFIG (EDIT HERE)
+   ===================== */
 
-  const messages = {
-    1: message1,
-    2: message2,
-    3: message3,
-    4: message4,
-    5: message5,
-    6: message6
-  };
+const noTexts = [
+  "Are you serious?",
+  "Really?",
+  "Think again.",
+  "Nice try 😏",
+  "No is not an option",
+  "Wrong answer 😌"
+];
 
-  /* =====================
-     PAGE ELEMENTS
-     ===================== */
-  const page1 = document.getElementById("page1");
-  const page2 = document.getElementById("page2");
-  const page3 = document.getElementById("page3");
+const messages = {
+  1: "Message 1 ❤️ Change this",
+  2: "Message 2 💕 Change this",
+  3: "Message 3 😘 Change this",
+  4: "Message 4 💌 Change this",
+  5: "Message 5 🥰 Change this",
+  6: "Message 6 💖 Change this"
+};
 
-  const yesBtn = document.getElementById("yesBtn");
-  const noBtn = document.getElementById("noBtn");
-  const buttonsBox = document.querySelector(".buttons");
-  const messageText = document.getElementById("messageText");
+/* =====================
+   ELEMENTS
+   ===================== */
 
-  /* =====================
-     NO BUTTON LOGIC
-     ===================== */
-  const noTexts = [
-    "Are you serious?",
-    "Really?",
-    "Think again.",
-    "Nice try 😏",
-    "No is not an option",
-    "Wrong answer"
-  ];
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+const page3 = document.getElementById("page3");
+const page4 = document.getElementById("page4");
 
-  let noCount = 0;
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const messageText = document.getElementById("messageText");
+const buttonsBox = document.querySelector(".buttons");
 
-  noBtn.addEventListener("mouseover", moveNo);
-  noBtn.addEventListener("click", moveNo);
+let noCount = 0;
 
-  function moveNo() {
-    const boxW = buttonsBox.offsetWidth;
-    const boxH = buttonsBox.offsetHeight;
-    const btnW = noBtn.offsetWidth;
-    const btnH = noBtn.offsetHeight;
+/* =====================
+   NO BUTTON
+   ===================== */
 
-    const x = Math.random() * (boxW - btnW);
-    const y = Math.random() * (boxH - btnH);
+noBtn.addEventListener("click", () => {
+  const boxW = buttonsBox.offsetWidth;
+  const boxH = buttonsBox.offsetHeight;
+  const btnW = noBtn.offsetWidth;
+  const btnH = noBtn.offsetHeight;
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+  noBtn.style.left = Math.random() * (boxW - btnW) + "px";
+  noBtn.style.top = Math.random() * (boxH - btnH) + "px";
 
-    noBtn.textContent = noTexts[noCount % noTexts.length];
-    noCount++;
-  }
+  noBtn.textContent = noTexts[noCount % noTexts.length];
+  noCount++;
+});
 
-  /* =====================
-     YES BUTTON
-     ===================== */
-  yesBtn.addEventListener("click", () => {
+/* =====================
+   YES BUTTON
+   ===================== */
+
+yesBtn.addEventListener("click", () => {
+  confetti({ particleCount: 250, spread: 100 });
+  page1.classList.add("hidden");
+  page2.classList.remove("hidden");
+});
+
+/* =====================
+   NAVIGATION
+   ===================== */
+
+function goToGallery() {
+  page2.classList.add("hidden");
+  page3.classList.remove("hidden");
+}
+
+function openMessage(num) {
+  page3.classList.add("hidden");
+  page4.classList.remove("hidden");
+  messageText.textContent = messages[num];
+}
+
+function backToGallery() {
+  page4.classList.add("hidden");
+  page3.classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
