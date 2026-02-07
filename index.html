@@ -63,6 +63,16 @@
   animation: softGlow 3s ease-in-out infinite;
 }
 
+/* INNER CONTENT PUSHED TO BOTTOM */
+.box-inner {
+  margin-top: auto; /* ⭐ THIS PUSHES CONTENT DOWN */
+}
+
+/* FIX BUTTONS ONLY ON PAGE 1 */
+.page1-buttons {
+  position: relative;   /* overrides absolute */
+  height: 120px;
+}
 
 
   .card {
@@ -251,13 +261,16 @@
 
   <!-- WHITE BOX WITH IMAGE INSIDE -->
   <div class="content-box">
+  <div class="box-inner">
     <p>I promise to always love & support you 🥰</p>
 
-    <div class="buttons">
+    <div class="buttons page1-buttons">
       <button id="yesBtn">Yes 💖</button>
       <button id="noBtn">No 🙄</button>
     </div>
   </div>
+</div>
+
 
 </div>
 
